@@ -1,6 +1,9 @@
 # Deep_learning
-By Holger Max Fløe Lyng, s214776
-This is a repository for 02456 deep learing course at DTU. I am a student in my master on my 9th semester.
+By Holger Max Fløe Lyng, s214776  
+This is a repository for the 02456 Deep Learning course at DTU.  
+I am a master's student on my 9th semester.
+
+---
 
 ## Lecture 1 - Neural Networks
 
@@ -8,29 +11,25 @@ This lecture introduced the fundamentals of **neural networks (NNs)** and **supe
 
 ### Supervised Learning
 Goal: learn a function  
-\[
-y = f_\phi(\mathbf{x})
-\]
-that maps inputs **x** to outputs **y**, using parameters **φ**.  
-Training minimizes a **loss function** \(L(\phi)\), e.g. **Mean Squared Error (MSE)** for regression:
-\[
-\hat{\phi} = \arg\min_\phi L(\phi)
-\]
+y = f_phi(x)  
+that maps inputs **x** to outputs **y**, using parameters **phi**.  
+Training minimizes a **loss function** L(phi), e.g. **Mean Squared Error (MSE)** for regression:  
+phi_hat = argmin_phi L(phi)
 
 We learned to compute loss for both **Gaussian regression** and **classification** (cross-entropy).
 
 ### Neural Network Architecture
-A **basic NN** contains one hidden layer (K=1) with many hidden units (D).  
-A **deep NN** has multiple hidden layers (K>1).
+A **basic NN** contains one hidden layer (K = 1) with many hidden units (D).  
+A **deep NN** has multiple hidden layers (K > 1).
 
-Each **neuron** computes:
-\[
-z = \mathbf{w}^T \mathbf{x} + b, \quad h = \sigma(z)
-\]
+Each **neuron** computes:  
+z = wᵀx + b  
+h = σ(z)  
+
 where **σ** is an activation function such as:
 - Sigmoid  
 - tanh  
-- **ReLU:** \( \sigma(z) = \max(0, z) \)
+- **ReLU:** σ(z) = max(0, z)
 
 Networks with hidden layers are called **Multilayer Perceptrons (MLPs)** or **Feed-Forward Networks (FFNs)**.  
 - **Regression output:** identity  
@@ -43,11 +42,14 @@ Training uses **Gradient Descent** and **Backpropagation** to efficiently comput
 
 **Exercises:** *Notebook 1.1 “FNN Pen and Paper.ipynb”* — implement loss, backpropagation, and SGD; see also theoretical problems (3.5, 3.11, 4.1, 4.11).
 
+---
+
 ## Lecture 2 - Learning
+
 This week introduced the core concepts for training deep learning models — **loss functions**, **optimization**, and **parameter initialization**.
 
 ### Loss Functions & MLE
-Training aims to minimize a **loss function** \(L(\phi)\) that measures how far predictions \(f_\phi(x_i)\) deviate from true outputs \(y_i\).  
+Training aims to minimize a **loss function** L(phi) that measures how far predictions f_phi(x_i) deviate from true outputs y_i.  
 Using **Maximum Likelihood Estimation (MLE)**, we find parameters that maximize data likelihood — typically by minimizing the **Negative Log-Likelihood (NLL)**.
 
 **Applications:**
@@ -55,11 +57,10 @@ Using **Maximum Likelihood Estimation (MLE)**, we find parameters that maximize 
 - **Classification:** For categorical outputs → **Cross-Entropy Loss**, using **Softmax** to map outputs to probabilities
 
 ### Optimization
-Models are fit with **Gradient Descent**:
-\[
-\phi^{(t+1)} = \phi^{(t)} - \eta \nabla_\phi L(\phi)
-\]
-where \( \eta \) is the learning rate.  
+Models are fit with **Gradient Descent**:  
+phi(t+1) = phi(t) - eta * ∇_phi L(phi)  
+where eta is the learning rate.  
+
 To handle large datasets and avoid poor local minima, **Stochastic Gradient Descent (SGD)** uses random data batches.
 
 **Improvements:**
@@ -69,13 +70,9 @@ To handle large datasets and avoid poor local minima, **Stochastic Gradient Desc
 ### Gradients & Initialization
 Gradients are computed via **Backpropagation**.  
 Proper initialization is essential:
-- Random weights:$$
-\phi_0 \sim \mathcal{N}(0, \sigma_0^2)
-$$
+- Random weights: phi_0 ~ N(0, σ0²)
+- **He Initialization** for ReLU: σ0 = √(2/D)
 
-$$
-\sigma_0 = \sqrt{\frac{2}{D}}
-$$
 to prevent exploding/vanishing activations.
 
 **Practical:** Implemented manual autodiff in *Notebook 2.1 — “FNN AutoDif Nanograd.ipynb”*.
