@@ -40,17 +40,17 @@ By the **Universal Approximation Theorem**, even a two-layer NN can approximate 
 Training uses **Gradient Descent** and **Backpropagation** to efficiently compute and update gradients.  
 **Stochastic Gradient Descent (SGD)** generalizes this for large datasets.
 
-**Exercises:** *Notebook 1.1 “FNN Pen and Paper.ipynb”* — implement loss, backpropagation, and SGD; see also theoretical problems (3.5, 3.11, 4.1, 4.11).
+**Exercises:** *Notebook 1.1 “FNN Pen and Paper.ipynb”* implement loss, backpropagation, and SGD; see also theoretical problems (3.5, 3.11, 4.1, 4.11).
 
 ---
 
 ## Lecture 2 - Learning
 
-This week introduced the core concepts for training deep learning models — **loss functions**, **optimization**, and **parameter initialization**.
+This week introduced the core concepts for training deep learning models, **loss functions**, **optimization**, and **parameter initialization**.
 
 ### Loss Functions & MLE
 Training aims to minimize a **loss function** L(phi) that measures how far predictions f_phi(x_i) deviate from true outputs y_i.  
-Using **Maximum Likelihood Estimation (MLE)**, we find parameters that maximize data likelihood — typically by minimizing the **Negative Log-Likelihood (NLL)**.
+Using **Maximum Likelihood Estimation (MLE)**, we find parameters that maximize data likelihood, typically by minimizing the **Negative Log-Likelihood (NLL)**.
 
 **Applications:**
 - **Regression:** Assuming Gaussian noise → NLL ≈ **Mean Squared Error (MSE)**  
@@ -70,16 +70,16 @@ To handle large datasets and avoid poor local minima, **Stochastic Gradient Desc
 ### Gradients & Initialization
 Gradients are computed via **Backpropagation**.  
 Proper initialization is essential:
-- Random weights: phi_0 ~ N(0, σ0²)
+- Random weights: phi_0 ~ N(0, σ0²) 
 - **He Initialization** for ReLU: σ0 = √(2/D)
 
 to prevent exploding/vanishing activations.
 
-**Practical:** Implemented manual autodiff in *Notebook 2.1 — “FNN AutoDif Nanograd.ipynb”*.
+**Practical:** Implemented manual autodiff in *Notebook 2.1 “FNN AutoDif Nanograd.ipynb”*.
 
 ## Week 3: Tricks of the Trade
 
-This week covered key methods for improving **performance**, **stability**, and **generalization** in deep learning — including performance metrics, regularization, and **residual networks**.
+This week covered key methods for improving **performance**, **stability**, and **generalization** in deep learnin, including performance metrics, regularization, and **residual networks**.
 
 ---
 
@@ -89,9 +89,9 @@ Test error sources: **Noise**, **Bias**, and **Variance**.
 
 - **Bias–Variance Trade-off:** Higher model complexity → lower bias but higher variance (risk of overfitting).  
 - **Data Splitting:**  
-  - D_train — parameter fitting  
-  - D_val — hyperparameter tuning  
-  - D_test — final evaluation  
+  - D_train - parameter fitting  
+  - D_val - hyperparameter tuning  
+  - D_test - final evaluation  
 - **Double Descent:** Test error can rise and fall again as capacity increases past perfect training fit (over-parameterized regime).
 
 ---
@@ -101,7 +101,7 @@ Used to prevent overfitting and improve generalization.
 
 - **Explicit Regularization:** Adds penalty term g(phi) to the loss L(phi).  
   Example: L2-regularization (Weight Decay) penalizes large weights.
-- **Implicit Regularization:** Arises from the optimization process itself — e.g., SGD tends to favor smoother, stable solutions.
+- **Implicit Regularization:** Arises from the optimization process itself, e.g., SGD tends to favor smoother, stable solutions.
 - **Heuristics:**  
   - *Early Stopping:* stop when validation error increases  
   - *Ensembling:* average multiple models  
@@ -128,7 +128,7 @@ Hands-on work included implementing **Feed-Forward Neural Networks (FFNNs)** in 
 
 ## Week 4: Convolutional Neural Networks (CNNs)
 
-This week introduced **Convolutional Neural Networks (CNNs)** — architectures built for structured data like images.
+This week introduced **Convolutional Neural Networks (CNNs)** architectures built for structured data like images.
 
 ---
 
@@ -169,7 +169,7 @@ Hands-on tasks (Notebooks 4.1–4.3) included implementing **CNNs in PyTorch**, 
 
 ## Week 5: Recurrent Neural Networks (RNNs)
 
-This week introduced **Recurrent Neural Networks (RNNs)** — models designed for **sequential data** (x = x₁,…,x_T) where sequence length T can vary.
+This week introduced **Recurrent Neural Networks (RNNs)** models designed for **sequential data** (x = x₁,…,x_T) where sequence length T can vary.
 
 ---
 
@@ -212,7 +212,7 @@ These control information flow, stabilizing gradient propagation. LSTMs are key 
 ### Variations & Alternatives
 - **Stacked RNNs:** Multiple RNN layers → deeper models  
 - **Bidirectional RNNs:** Process sequences forward & backward (uses past + future context, but not causal)  
-- **Echo State Networks (ESNs):** Use a fixed random “reservoir” — only output weights are trained, reducing gradient issues
+- **Echo State Networks (ESNs):** Use a fixed random “reservoir”, only output weights are trained, reducing gradient issues
 
 ---
 
@@ -223,7 +223,7 @@ Hands-on practice in *Notebook 5.1*:
 
 ## Week 6: Transformers
 
-This week introduced the **Transformer** — an architecture specialized for **sequential data** and foundational for modern large language models (LLMs) and vision tasks.  
+This week introduced the **Transformer** an architecture specialized for **sequential data** and foundational for modern large language models (LLMs) and vision tasks.  
 The focus was on the **Attention mechanism**, the core of the Transformer layer.
 
 ---
@@ -243,7 +243,7 @@ Attention(Q, K, V) = Softmax((QKᵀ) / √D_k) * V
 
 #### Multi-Head & Self-Attention
 - **Multi-Head Attention:** Runs several attention layers in parallel, capturing information from multiple representation subspaces.  
-- **Self-Attention:** Q, K, and V come from the same input — connects all positions in a sequence, enabling **long-range dependencies** and **parallel computation** (unlike RNNs).
+- **Self-Attention:** Q, K, and V come from the same input, connects all positions in a sequence, enabling **long-range dependencies** and **parallel computation** (unlike RNNs).
 
 ---
 
@@ -252,16 +252,16 @@ A Transformer layer removes the need for recurrence and includes:
 
 1. **Multi-Head Self-Attention**  
 2. **Residual Connections** (as in ResNets)  
-3. **Layer Normalization** — normalizes per sample, not per batch  
-4. **Feed-Forward Network (FFN)** — fully connected layer  
+3. **Layer Normalization** - normalizes per sample, not per batch  
+4. **Feed-Forward Network (FFN)** - fully connected layer  
 
 **Positional Encoding** is added to retain order information since self-attention alone is permutation-invariant.
 
 ---
 
 ### Transformer Model Types
-- **Encoder-only:** e.g., BERT — trained with self-supervision (masked tokens)  
-- **Decoder-only:** e.g., GPT — uses causal self-attention for next-token prediction  
+- **Encoder-only:** e.g., BERT - trained with self-supervision (masked tokens)  
+- **Decoder-only:** e.g., GPT - uses causal self-attention for next-token prediction  
 - **Encoder-Decoder:** e.g., translation models combining both parts
 
 ---
