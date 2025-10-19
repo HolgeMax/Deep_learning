@@ -10,4 +10,11 @@ In this lecture we learn about NN learning through loss functions and gradient d
 
 
 ## Project Idees
-Non yet
+Multi-modal registration to mri. 
+Dataset:
+https://www.kaggle.com/datasets/grantmcnatt/mri-and-pet-dice-similarity-dataset?utm_source=chatgpt.com
+https://www.kaggle.com/datasets/29c3607295965ebb030f2d158fec487412d84c82528dd44f8ef956aef35541aa
+https://www.med.upenn.edu/cbica/brats2020/data.html?utm_source=chatgpt.com
+https://sites.wustl.edu/oasisbrains/?utm_source=chatgpt.com
+https://www.kaggle.com/datasets/purnimakumarrr/adhd200-preprocessed-anatomical-dataset
+https://www.synapse.org/Synapse:syn64153130/wiki/
