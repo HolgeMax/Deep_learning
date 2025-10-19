@@ -3,7 +3,45 @@ By Holger Max Fløe Lyng, s214776
 This is a repository for 02456 deep learing course at DTU. I am a student in my master on my 9th semester.
 
 ## Lecture 1 - Neural Networks
-In this lecture we learn basic neural network (\textbf{nn}) this i a network containing only one hidden layer (K) and arbitrarely many hidden units (D). We get introduced to deep nn, nn containing more than one hidden layer (K), stocastic gradient descent, backpropagation and loss function. We learned how to calculate loss function for classification and normal gaussian. we learned how gradient descent and backpropagation works and how to generalize it. See (call 1.1 FNN Pen and paper) for exercises.
+
+This lecture introduced the fundamentals of **neural networks (NNs)** and **supervised learning**, forming the foundation of deep learning.
+
+### Supervised Learning
+Goal: learn a function  
+\[
+y = f_\phi(\mathbf{x})
+\]
+that maps inputs **x** to outputs **y**, using parameters **φ**.  
+Training minimizes a **loss function** \(L(\phi)\), e.g. **Mean Squared Error (MSE)** for regression:
+\[
+\hat{\phi} = \arg\min_\phi L(\phi)
+\]
+
+We learned to compute loss for both **Gaussian regression** and **classification** (cross-entropy).
+
+### Neural Network Architecture
+A **basic NN** contains one hidden layer (K=1) with many hidden units (D).  
+A **deep NN** has multiple hidden layers (K>1).
+
+Each **neuron** computes:
+\[
+z = \mathbf{w}^T \mathbf{x} + b, \quad h = \sigma(z)
+\]
+where **σ** is an activation function such as:
+- Sigmoid  
+- tanh  
+- **ReLU:** \( \sigma(z) = \max(0, z) \)
+
+Networks with hidden layers are called **Multilayer Perceptrons (MLPs)** or **Feed-Forward Networks (FFNs)**.  
+- **Regression output:** identity  
+- **Classification output:** Softmax
+
+### Approximation & Training
+By the **Universal Approximation Theorem**, even a two-layer NN can approximate any continuous function with enough hidden units.  
+Training uses **Gradient Descent** and **Backpropagation** to efficiently compute and update gradients.  
+**Stochastic Gradient Descent (SGD)** generalizes this for large datasets.
+
+**Exercises:** *Notebook 1.1 “FNN Pen and Paper.ipynb”* — implement loss, backpropagation, and SGD; see also theoretical problems (3.5, 3.11, 4.1, 4.11).
 
 ## Lecture 2 - Learning
 This week introduced the core concepts for training deep learning models — **loss functions**, **optimization**, and **parameter initialization**.
@@ -31,11 +69,13 @@ To handle large datasets and avoid poor local minima, **Stochastic Gradient Desc
 ### Gradients & Initialization
 Gradients are computed via **Backpropagation**.  
 Proper initialization is essential:
-- Random weights: \( \phi_0 \sim \mathcal{N}(0, \sigma_0^2) \)
-- **He Initialization** for ReLU:
-  \[
-  \sigma_0 = \sqrt{\frac{2}{D}}
-  \]
+- Random weights:$$
+\phi_0 \sim \mathcal{N}(0, \sigma_0^2)
+$$
+
+$$
+\sigma_0 = \sqrt{\frac{2}{D}}
+$$
 to prevent exploding/vanishing activations.
 
 **Practical:** Implemented manual autodiff in *Notebook 2.1 — “FNN AutoDif Nanograd.ipynb”*.
