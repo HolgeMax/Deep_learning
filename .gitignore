@@ -1,0 +1,10 @@
+data/
+
+*.zip
+*.tar.gz
+*.h5
+*.pt
+*.npy
+
+__pycache__/
+.DS_Store
