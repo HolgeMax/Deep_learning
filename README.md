@@ -1,7 +1,21 @@
 # Deep_learning
 By Holger Max Fløe Lyng, s214776  
 This is a repository for the 02456 Deep Learning course at DTU.  
-I am a master's student on my 9th semester.
+Master student in 9th semester.
+
+---
+
+#### Deep learning project
+Project 21. We were given a micro-CT dataset of AlSi10Mg alloys. With the task being one of segmentation, these alloys had pocket/pores, the alloy was heat treated. These pores may experiance growth or shrinkage. We aim to build 3D CNN autoencoders to process these volumes. The dataset provided only included 22x768x768 labeled and 149x1270x1270 unlabeled. Due to the samme size dimension of 22, it was not feasable to use 3D-model to process this data. Therefore we built three 2D-model based on the Unet. We found a public micro-CT dataset (SIMUPOR) of pores medium consisting of sand(solids), water, oil and gas. 40 labeled volumes, which 19 labeled and 22 unlabeled. Of the labeled 4 volumes was used for validation and test. Underneath is the project github.
+\url{https://github.com/JustavGunker/02456-final-project}
+>$ 2D-models
+>\item Unet baseline, supervised 
+>\item Unet with data augmentation, supervised
+>\item Unet with dual decoder, for the semi-supervised task
+>$ 3D-models (all have dual decoder(therefore semi-supervised), skips, data augmentation, and resblock in bottleneck)
+>\item Baseline Autoencoder
+>\item Autoencoder with attention gated skips
+>\item Variational Autoencoder
 
 ---
 
