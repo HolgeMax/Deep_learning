@@ -1,7 +1,32 @@
 # Deep_learning
 By Holger Max Fløe Lyng, s214776  
 This is a repository for the 02456 Deep Learning course at DTU.  
-I am a master's student on my 9th semester.
+Master student in 9th semester.
+
+---
+
+#### Deep learning project
+Project 21. We were given a micro-CT dataset of AlSi10Mg alloys. With the task being one of segmentation, these alloys had pocket/pores, the alloy was heat treated. These pores may experiance growth or shrinkage. We aim to build 3D CNN autoencoders to process these volumes. The dataset provided only included 22x768x768 labeled and 149x1270x1270 unlabeled. Due to the small size dimension of 22, it was not feasable to use 3D-model to process this data. Therefore we built three 2D-model based on the Unet. We found a public micro-CT dataset (SIMUPOR) of pores medium consisting of sand(solids), water, oil and gas. 40 labeled volumes, of which 19 was usee as labeled and 22 as unlabeled data. Of the labeled 4 volumes was used for validation and test. Underneath is the project github.
+
+https://github.com/JustavGunker/02456-final-project
+
+## 2D Models (Image Slice Segmentation)
+
+These models primarily use a 2D U-Net architecture.
+
+* **U-Net Baseline, Supervised:** A standard U-Net trained solely on labeled data for segmentation.
+* **U-Net with Data Augmentation, Supervised:** The baseline U-Net enhanced with data augmentation techniques to improve generalization.
+* **U-Net with Dual Decoder, Semi-Supervised:** A multi-task U-Net with two decoder heads (one for segmentation, one for reconstruction) used for semi-supervised learning.
+
+---
+
+## 3D Models (Volumetric Segmentation)
+
+These models are designed for 3D volumetric data and incorporate dual decoders, skip connections, data augmentation, and a residual block in the bottleneck for semi-supervised learning.
+
+* **Baseline Autoencoder (AE):** A 3D U-Net-like AE architecture.
+* **Attention-Gated Autoencoder (AG-AE):** The 3D AE enhanced with **Attention Gates** in the skip connections.
+* **Variational Autoencoder (VAE):** A standard 3D VAE architecture, extended with a segmentation decoder for the semi-supervised task.
 
 ---
 
